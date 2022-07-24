@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root{
+    --modalBg: rgb(0, 0, 0);
+    --transition: all 0.3s linear;
+    --shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+html{
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 16px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+}
+
+body{
+    min-height: 100vh;
+    min-width: 100vw;
+}
+
+.center{
+    margin: 50px 100px;
+    min-height: 100vh;
+    display: grid;
+}
+
+.images-nature{
+
+}
+
+img{
+    max-width: 300px;
+    min-width: 200px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 5px;
+
+}
