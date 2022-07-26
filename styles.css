@@ -160,7 +160,7 @@ img:hover{
     margin: 0 70px;
 }
 
-.images-list img{
+.imageM{
     max-height: 100px;
     border-radius: 0;
     opacity: 0.6;
@@ -168,5 +168,9 @@ img:hover{
 }
 
 .images-list img:hover{
+    opacity: 1;
+}
+
+.imageM.selected{
     opacity: 1;
 }

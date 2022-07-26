@@ -1,13 +1,14 @@
 function getElement(element){
-    if(element){
-        return document.querySelector(element);
+    const elem = document.querySelector(element);
+    if(elem){
+        return elem;
     }
 }
 
 class Nature{
-    constructor(element){
-        this.container = element;
-        this.list = [...element.querySelectorAll(".img")]
+    constructor(selection){
+        this.container = selection;
+        this.list = [...selection.querySelectorAll(".img")];
 
         this.modal = getElement(".modal");
         this.closeBtn = getElement(".close-btn");
@@ -18,37 +19,40 @@ class Nature{
         this.imageTitle = getElement(".title");
         this.imagesListModal = getElement(".images-list");
 
-        this.selectedImages = this.selectedImages.bind(this);
         this.openModal = this.openModal.bind(this);
-        
-       this.container.addEventListener("click", function(e){
-        if (e.target.classList.contains("img")) {
-            
+
+        this.container,addEventListener("click", function(e){
+            if (e.target.classList.contains("img")) {
+                this.openModal(e.target, this.list);
+            }
+        }.bind(this));
         }
-       })
+        
+        openModal(selectedItem, list){
+            this.setMainImage(selectedItem);
+            this.imagesListModal.innerHTML = list
+            .map(function(item){
+                return `<img 
+                src="${item.src}" 
+                alt="${item.alt}" 
+                title="${item.title} 
+                id="${item.dataset.id}
+                class="${selectedItem.dataset.id === item.dataset.id ? "imageM selected" : "imageM"}">`;
+            }).join("");
+            this.modal.classList.add("open");
+        }
 
+        setMainImage(selectedItem){
+            this.mainImage.src = selectedItem.src;
+            this.mainImage.alt = selectedItem.alt;
+            this.imageTitle.textContent = selectedItem.title;
+        }
     }
 
-    selectedImages(){
-        this.list.forEach(function(e){
-           e.addEventListener("click", function(a){
-               return a.target;
-           });
-        });
-    }
-    openModal(selectedImage, list){
-        this.setImageMain(selectedImage);
-        this.mainImage.innerHTML = list
-        .map()function
-    }
-    setImageMain(selectedImage){
-        this.mainImage.src = selectedImage.src;
-        this.imageTitle.textContent = selectedImages.title;
-    }
 
-    
-}
 
-const elem = new Nature(getElement(".images-nature"))
 
-console.log(elem.selectedImages());
+
+const elem = new Nature(getElement(".images-nature"));
+const elem2 = new Nature(getElement(".images-city"));
+
