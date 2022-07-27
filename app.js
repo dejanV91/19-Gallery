@@ -20,7 +20,7 @@ class Nature{
         this.imageTitle = getElement(".titleMain");
         this.imagesListModal = getElement(".images-list");
 
-        this.container,addEventListener("click", function(e){
+        this.container.addEventListener("click", function(e){
             if (e.target.classList.contains("img")) {
                 this.openModal(e.target, this.list);
             }
@@ -39,12 +39,16 @@ class Nature{
                 class="${selectedItem.dataset.id === item.dataset.id ? "imageM selected" : "imageM"}">`;
             }).join("");
             this.modal.classList.add("open");
+            this.closeBtn.addEventListener("click", closeModal);
         }
 
         setMainImage(selectedItem){
             this.mainImage.src = selectedItem.src;
             this.imageTitle.textContent = selectedItem.title;
         }
+
+        
+
     }
 
 const elem = new Nature(getElement(".images-nature"));
