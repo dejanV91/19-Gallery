@@ -58,6 +58,10 @@ class Nature{
 
         closeModal(){
             this.modal.classList.remove("open");
+            this.closeBtn.removeEventListener("click", this.closeModal);
+            this.nextBtn.removeEventListener("click", this.nextImage);
+            this.previousBtn.removeEventListener("click", this.previousImage);
+            this.imagesListModal.removeEventListener("click", this.chooseImg);
         }
 
         nextImage(){
@@ -81,8 +85,8 @@ class Nature{
             const selected = this.imagesListModal.querySelector(".selected");
             if (!e.target.classList.contains("selected")) {
                 selected.classList.remove("selected");
-                this.setMainImage(e.target);
                 e.target.classList.add("selected");
+                this.setMainImage(e.target);
             }
         }
     }
