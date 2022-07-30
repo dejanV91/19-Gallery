@@ -22,6 +22,7 @@ class Nature{
         this.closeModal = this.closeModal.bind(this);
         this.nextImage = this.nextImage.bind(this);
         this.previousImage = this.previousImage.bind(this);
+        this.chooseImg = this.chooseImg.bind(this);
 
         this.container.addEventListener("click", function(e){
             if (e.target.classList.contains("img")) {
@@ -45,6 +46,9 @@ class Nature{
             this.closeBtn.addEventListener("click", this.closeModal);
             this.nextBtn.addEventListener("click", this.nextImage);
             this.previousBtn.addEventListener("click", this.previousImage);
+            this.imagesListModal.addEventListener("click", this.chooseImg);
+            
+            
         }
 
         setMainImage(selectedItem){
@@ -71,6 +75,15 @@ class Nature{
             current.classList.remove("selected");
             prev.classList.add("selected");
             this.setMainImage(prev);
+        }
+
+        chooseImg(e){
+            const selected = this.imagesListModal.querySelector(".selected");
+            if (!e.target.classList.contains("selected")) {
+                selected.classList.remove("selected");
+                this.setMainImage(e.target);
+                e.target.classList.add("selected");
+            }
         }
     }
 
